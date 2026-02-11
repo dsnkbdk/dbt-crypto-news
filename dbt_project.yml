@@ -39,5 +39,7 @@ models:
   crypto_news:
     staging:
       +materialized: view
+    intermediate:
+      +materialized: view
     marts:
       +materialized: table
