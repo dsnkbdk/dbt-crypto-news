@@ -1,3 +1,12 @@
+{{
+    config(
+        materialized='incremental',
+        unique_key = 'news_id',
+        incremental_strategy = 'merge'
+    )
+}}
+
+
 with
 
 dim_source as (
@@ -30,3 +39,7 @@ select
 from int_cryptonews ic
 left join dim_source  ds on ds.source  = ic.source
 left join dim_cryptocurrency dc on dc.cryptocurrency = ic.cryptocurrency
+
+{% if is_incremental() %}
+    where ic.news_id not in (select news_id from {{ this }})
+{% endif %}
