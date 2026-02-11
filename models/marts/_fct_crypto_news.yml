@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: dim_source
+    columns:
+      - name: source_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_cryptocurrency
+    columns:
+      - name: cryptocurrency_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: fct_crypto_news
+    columns:
+      - name: news_id
+        data_tests:
+          - unique
+          - not_null
+      
+      - name: source_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_source')
+                field: source_id
+      
+      - name: cryptocurrency_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_cryptocurrency')
+                field: cryptocurrency_id
+

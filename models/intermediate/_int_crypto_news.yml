@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: int_crypto_news__cryptonews
+    
+    columns:
+      - name: news_id
+        data_tests:
+          - not_null
+          - unique
+
+      - name: published_date
+        data_tests:
+          - not_null
+
+      - name: title_text
+        data_tests:
+          - not_null
+          - unique
+
+      - name: url
+        data_tests:
+          - not_null
+          - unique

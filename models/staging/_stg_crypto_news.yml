@@ -1,0 +1,19 @@
+models:
+  - name: stg_crypto_news__cryptonews
+    columns:
+      
+      - name: published_date
+        data_tests:
+          - not_null
+      
+      - name: class
+        data_tests:
+          - not_null
+      
+      - name: source
+        data_tests:
+          - not_null
+      
+      - name: cryptocurrency
+        data_tests:
+          - not_null
